@@ -1,8 +1,8 @@
-Flutter widget and screen generator
+## Overview
 
-## Features
-
-Flutter widget and screen generator
+A powerful and flexible CLI tool for generating Dart code snippets and templates with ease. 
+Ideal for streamlining repetitive tasks, such as creating UI components, 
+boilerplate code, and more in both Flutter and pure Dart projects.
 
 ## Usage
 Add dependency to `pubspec.yaml`
@@ -12,11 +12,13 @@ dev_dependencies:
 ```
 
 install the dependency
+Dart
 ```
-# Dart
 pub get
+```
 
-# Flutter
+Flutter
+```
 flutter packages get
 ```
 
