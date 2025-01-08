@@ -13,7 +13,9 @@ Future<void> main(List<String> arguments) async {
     print('2: Login Screen');
     print('3: Exit');
 
-    stdout.write('Select a snippet to generate: ',);
+    stdout.write(
+      'Select a snippet to generate: ',
+    );
     String? choice = stdin.readLineSync();
 
     switch (choice) {
@@ -59,9 +61,11 @@ Future<void> buttonMenu() async {
 
 Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
   String output;
-  switch(snippetType) {
+  switch (snippetType) {
     case 'basic button':
-      stdout.write('Enter the button label: ',);
+      stdout.write(
+        'Enter the button label: ',
+      );
       String? label = stdin.readLineSync();
       if (label != null && label.isNotEmpty) {
         output = CodeSnippetGenerator().elevatedButton(label);
@@ -71,28 +75,31 @@ Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
         print('Button label cannot be empty.');
       }
       await waitForUserAcknowledgment();
-    break;
-    
+      break;
+
     case 'outline button':
       output = CodeSnippetGenerator().outlineButton();
       askSaveContent(output, "outline_button_snippet.dart", WidgetPath.widgets);
       await copyToClipboard(output);
-    break;
+      break;
 
     case 'login screen':
       output = CodeSnippetGenerator().loginScreen();
       askSaveContent(output, "login_screen.dart", WidgetPath.screens);
       await copyToClipboard(output);
       await waitForUserAcknowledgment();
-    break;
+      break;
     default:
       print('invalid choice.');
-    return;
+      return;
   }
-
 }
 
-Future<void> askSaveContent(String output, String fileName, WidgetPath widgetPath) async {
+Future<void> askSaveContent(
+  String output,
+  String fileName,
+  WidgetPath widgetPath,
+) async {
   await copyToClipboard(output);
 
   // Ask if the user wants to save the content
@@ -110,7 +117,6 @@ Future<void> askSaveContent(String output, String fileName, WidgetPath widgetPat
   } else {
     print('Skipping save. Content has been copied to clipboard.');
   }
-
 }
 
 void writeToFile(String outputDirectory, String fileName, String content) {
@@ -120,7 +126,9 @@ void writeToFile(String outputDirectory, String fileName, String content) {
   // Create the directory if it doesn't exist
   final directory = Directory(outputDirectory);
   if (!directory.existsSync()) {
-    directory.createSync(recursive: true); // recursive: true creates parent directories if needed
+    directory.createSync(
+      recursive: true,
+    ); // recursive: true creates parent directories if needed
   }
 
   file.writeAsStringSync(content);
@@ -155,7 +163,8 @@ Future<void> copyToClipboard(String text) async {
 }
 
 Future<void> waitForUserAcknowledgment() async {
-  stdout.write('\nPress Enter to return to the main menu or type "q" to exit the program: ');
+  stdout.write(
+      '\nPress Enter to return to the main menu or type "q" to exit the program: ');
   String? input = stdin.readLineSync();
 
   if (input != null && input.toLowerCase() == 'q') {
@@ -165,4 +174,3 @@ Future<void> waitForUserAcknowledgment() async {
     print('Returning to the main menu...');
   }
 }
-

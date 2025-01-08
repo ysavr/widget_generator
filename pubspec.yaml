@@ -1,5 +1,7 @@
 name: widget_generator
-description: A command-line utility to generate Dart code snippets.
+description:  A powerful and flexible CLI tool for generating Dart code snippets and templates with ease. 
+  Ideal for streamlining repetitive tasks, such as creating UI components, 
+  boilerplate code, and more in both Flutter and pure Dart projects.
 version: 1.0.0
 repository: https://github.com/ysavr/widget_generator
 
