@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
-import 'package:widget_generator/src/code_snippet_generator.dart';
-import 'package:widget_generator/src/enum.dart';
+
+import 'package:widget_generator/core.dart';
 
 Future<void> main(List<String> arguments) async {
   print('\nWelcome to a code snippet generator 🚀');
@@ -37,7 +37,8 @@ Future<void> buttonMenu() async {
     print('\nButton Sub-Menu:');
     print('1: Basic Button');
     print('2: Button with Outline Border');
-    print('3: Back to Main Menu');
+    print('3: Splash Button');
+    print('4: Back to Main Menu');
 
     stdout.write('Select a button type to generate: ');
     String? subChoice = stdin.readLineSync();
@@ -50,9 +51,12 @@ Future<void> buttonMenu() async {
         await chooseDirectoryAndGenerateSnippet('outline button');
         break;
       case '3':
+        await chooseDirectoryAndGenerateSnippet('splash button');
+        break;
+      case '4':
         return; // Go back to main menu
       default:
-        print('Invalid choice. Please select 1, 2, or 3.');
+        print('Invalid choice.');
     }
   }
 }
@@ -81,6 +85,12 @@ Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
       await copyToClipboard(output);
       break;
 
+    case 'splash button': 
+      output = CodeSnippetGenerator().splashButton();
+      askSaveContent(output, "splash_button.dart", WidgetPath.widgets);
+      await copyToClipboard(output);
+      break;
+
     case 'login screen':
       output = CodeSnippetGenerator().loginScreen();
       askSaveContent(output, "login_screen.dart", WidgetPath.screens);
@@ -88,7 +98,7 @@ Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
       await waitForUserAcknowledgment();
       break;
     default:
-      print('invalid choice.');
+      print('Invalid choice.');
       return;
   }
 }

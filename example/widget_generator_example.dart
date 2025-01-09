@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:widget_generator/src/widget_generator_base.dart';
+
+import '../bin/widget_generator.dart';
 
 Future<void> main() async {
   print('\nWelcome to a code snippet generator 🚀');
