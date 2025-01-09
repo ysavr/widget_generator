@@ -1,4 +1,4 @@
-import 'package:widget_generator/core.dart';
+import 'package:widget_generator/widget_generator.dart';
 
 class CodeSnippetGenerator {
   String elevatedButton(String label) {
