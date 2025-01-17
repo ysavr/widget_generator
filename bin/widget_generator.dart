@@ -3,6 +3,10 @@ import 'package:path/path.dart' as path;
 
 import 'package:widget_generator/widget_generator.dart';
 
+/// Entry point for Code Snippet Generator.
+///
+/// Provides a menu-driven interface to generate different types of widget
+/// code snippets and save them to files.
 Future<void> main(List<String> arguments) async {
   print('\nWelcome to a code snippet generator 🚀');
 
@@ -32,6 +36,9 @@ Future<void> main(List<String> arguments) async {
   }
 }
 
+/// Displays a sub-menu for button-related snippet generation.
+///
+/// Allows users to select different types of button snippets to generate.
 Future<void> buttonMenu() async {
   while (true) {
     print('\nButton Sub-Menu:');
@@ -61,6 +68,9 @@ Future<void> buttonMenu() async {
   }
 }
 
+/// Prompts the user to select a directory and generates a code snippet.
+///
+/// [snippetType] is the type of snippet to generate (e.g., "basic button", "login screen").
 Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
   String output;
   switch (snippetType) {
@@ -85,7 +95,7 @@ Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
       await copyToClipboard(output);
       break;
 
-    case 'splash button': 
+    case 'splash button':
       output = CodeSnippetGenerator().splashButton();
       askSaveContent(output, "splash_button.dart", WidgetPath.widgets);
       await copyToClipboard(output);
@@ -103,6 +113,11 @@ Future<void> chooseDirectoryAndGenerateSnippet(String snippetType) async {
   }
 }
 
+/// Asks the user whether to save generated content to a file.
+///
+/// [output] is the generated code content.
+/// [fileName] is the name of the file to save.
+/// [widgetPath] is the directory path category for saving files.
 Future<void> askSaveContent(
     String output, String fileName, WidgetPath widgetPath) async {
   await copyToClipboard(output);
@@ -124,6 +139,11 @@ Future<void> askSaveContent(
   }
 }
 
+/// Writes the generated content to a specified file.
+///
+/// [outputDirectory] is the directory to save the file.
+/// [fileName] is the name of the file.
+/// [content] is the content to write into the file.
 void writeToFile(String outputDirectory, String fileName, String content) {
   final filePath = path.join(outputDirectory, fileName);
   final file = File(filePath);
@@ -146,6 +166,9 @@ void writeToFile(String outputDirectory, String fileName, String content) {
   print('--------------------------------');
 }
 
+/// Copies the given [text] to the clipboard.
+///
+/// Clipboard functionality depends on the platform.
 Future<void> copyToClipboard(String text) async {
   if (Platform.isWindows) {
     final process = await Process.start('clip', []);
@@ -167,6 +190,7 @@ Future<void> copyToClipboard(String text) async {
   }
 }
 
+/// Waits for user acknowledgment to return to the menu or exit the program.
 Future<void> waitForUserAcknowledgment() async {
   stdout.write(
       '\nPress Enter to return to the main menu or type "q" to exit the program: ');

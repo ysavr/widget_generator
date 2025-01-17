@@ -1,3 +1,8 @@
+/// Generates the code for a splash button.
+library splash_button;
+
+/// This function returns a string containing the Dart code for Button snippet
+
 String splashButtonSnippet() {
   String code = '''
 class SplashButton extends StatelessWidget {
@@ -51,5 +56,5 @@ class SplashButton extends StatelessWidget {
   }
 }
 ''';
-return code;
+  return code;
 }

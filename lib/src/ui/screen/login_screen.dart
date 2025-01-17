@@ -1,3 +1,10 @@
+/// Generates the code for a login screen.
+library login_screen;
+
+/// This function returns a string containing the Dart code for a Scaffold widget
+/// that displays a login form. The form consists of an app logo, email field,
+/// password field, remember me checkbox, login button, and forgot password link.
+
 String loginScreenSnippet() {
   String code = '''
 class LoginScreen extends StatefulWidget {

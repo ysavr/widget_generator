@@ -1,3 +1,8 @@
+/// Generates the code for a outline button.
+library outline_button;
+
+/// This function returns a string containing the Dart code for Outline Button snippet
+
 String outlineButtonSnippet() {
   String code = '''
 class AppBorderButtonWidget extends StatelessWidget {
